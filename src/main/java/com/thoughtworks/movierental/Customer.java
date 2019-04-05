@@ -18,8 +18,15 @@ public class Customer {
 	public String getName() {
 		return name;
 	}
-	public String statement() {
-		return new TextStatement().display(this.rentals, this.getName());
+	public String statement(String type) {
+		if(type == null) {
+			return null;
+		}else if(type.equalsIgnoreCase("text")) {
+			return new TextStatement().display(this.rentals, this.getName());
+		}else if(type.equalsIgnoreCase("html")) {
+			return new HtmlStatement().display(this.rentals, this.getName());
+		}
+		return null;
 	}
 
 /*	public String statement() {
